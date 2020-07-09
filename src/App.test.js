@@ -9,8 +9,13 @@ configure({ adapter: new Adapter() });
 
 describe('Counter testing', () => {
   test('render the title of counter', () => {
-    const wrapper = shallow(<App />)
+    const wrapper = shallow(<App />);
     expect(wrapper.find('h1').text()).toContain("This is counter app");
   });
-})
+
+  test('render a button with the text of `increment`', () => {
+    const wrapper = shallow(<App />);
+    expect(wrapper.find('#increment-button').text()).toBe("Increment");
+  });
+});
 
