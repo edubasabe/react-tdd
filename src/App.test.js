@@ -29,5 +29,17 @@ describe('Counter testing', () => {
     wrapper.find('#increment-button').simulate('click');
     expect(wrapper.find('#counter-value').text()).toBe("1");
   });
+
+  test('render the click event of decrement button and decrement counter value', () => {
+    wrapper.find('#increment-button').simulate('click');
+    expect(wrapper.find('#counter-value').text()).toBe("1");
+    wrapper.find('#decrement-button').simulate('click');
+    expect(wrapper.find('#counter-value').text()).toBe("0");
+  });
+
+  test('on decrement the counter on zero must be always zero', () => {
+    wrapper.find('#decrement-button').simulate('click');
+    expect(wrapper.find('#counter-value').text()).toBe("0");
+  });
 });
 
