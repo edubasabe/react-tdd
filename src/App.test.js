@@ -2,10 +2,7 @@ import React from 'react';
 import { render } from '@testing-library/react';
 import App from './App';
 
-import { configure, shallow } from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
-
-configure({ adapter: new Adapter() });
+import { shallow } from 'enzyme';
 
 describe('Counter testing', () => {
   let wrapper;
@@ -41,5 +38,14 @@ describe('Counter testing', () => {
     wrapper.find('#decrement-button').simulate('click');
     expect(wrapper.find('#counter-value').text()).toBe("0");
   });
+
+  test('when counter will be equal zero button must be disabled', () => {
+    wrapper.find('#increment-button').simulate('click');
+    expect(wrapper.find('#counter-value').text()).toBe("1");
+    wrapper.find('#decrement-button').simulate('click');
+    expect(wrapper.find('#counter-value').text()).toBe("0");
+    expect(wrapper.find('#decrement-button').prop('disabled')).toBe(true);
+  });
+
 });
 
